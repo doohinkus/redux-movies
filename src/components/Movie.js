@@ -1,23 +1,23 @@
 import React from 'react';
 import {useTransition, animated} from 'react-spring'
 
-function Movie(props) {
+function Movie({ poster_path, title, id, release_date, overview }) {
   const image = (
-    props.poster_path != null
+    poster_path != null
     ?  
-      (<img src={`http://image.tmdb.org/t/p/w185/${props.poster_path}`} alt={`movie cover for ${props.title}`}/>)
+      (<img src={`http://image.tmdb.org/t/p/w185/${poster_path}`} alt={`movie cover for ${title}`}/>)
     : 
       (<div><p>😞 😞 😞</p><p>No movie image</p></div>)
   );
   return (
-    <div key={props.id} className="row mb-3">
+    <div key={id} className="row mb-3">
       <div className="col-md-4 text-center">
         {image}
       </div>
       <div className="col-md-8">
-        <h3>{props.title} ({props.release_date ? props.release_date.substring(0,4) : "No Date"})</h3>
-        {/* <p className="text-success">{this.state.companies.find(props => props.id===this.state.company).name}</p> */}
-        <p>{props.overview}</p>
+        <h3>{title} ({release_date ? release_date.substring(0,4) : "No Date"})</h3>
+        {/* <p className="text-success">{this.state.companies.find(props => id===this.state.company).name}</p> */}
+        <p>{overview}</p>
       </div>
     </div>
   );
