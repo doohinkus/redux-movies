@@ -42,7 +42,7 @@ export function fetchMoviesByCompany(company){
 export function fetchMoviesByKeyword(keyword){
   return {
     type: C.FETCH_MOVIES_BY_KEYWORD,
-    payload: keyword
+    // payload: axios call ...
   }
 }
 export function startFetch(){
@@ -68,7 +68,7 @@ export function endFetchFail(){
 export function filterMoviesByRating(rating){
   return {
     type: C.FILTER_MOVIES_BY_RATING,
-    payload: rating
+    // payload: filter payload in reducer ...
   }
 }
 export function filterMoviesByApproval(){
@@ -138,11 +138,13 @@ export default function movieReducer(state=initialState, action){
     case C.FILTER_MOVIES_BY_RATING:
       return {
         ...state,
+        // apply filter function
         movies: action.payload
       }
     case C.FILTER_MOVIES_BY_APPROVAL:
       return {
         ...state,
+        // apply filter function
         movies: action.payload      
       }
     case C.END_FETCH_SUCCESS:
