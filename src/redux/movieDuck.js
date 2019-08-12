@@ -41,7 +41,7 @@ export function fetchMoviesByCompany(company){
 }
 export function fetchMoviesByKeyword(keyword){
   return {
-    type: C.FETCH_MOVIES_BY_COMPANY,
+    type: C.FETCH_MOVIES_BY_KEYWORD,
     payload: keyword
   }
 }
@@ -67,14 +67,13 @@ export function endFetchFail(){
 }
 export function filterMoviesByRating(rating){
   return {
-    type: C.FETCH_MOVIES_BY_COMPANY,
+    type: C.FILTER_MOVIES_BY_RATING,
     payload: rating
   }
 }
 export function filterMoviesByApproval(){
   return {
     type: C.FILTER_MOVIES_BY_APPROVAL,
-    // payload: action.payload
   }
 }
 
