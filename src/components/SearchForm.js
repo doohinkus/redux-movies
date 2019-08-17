@@ -8,9 +8,10 @@ function SearchForm({ fetchMoviesByKeyword }) {
   }
   function handleSubmit(e){
     handleError();
-    fetchMoviesByKeyword(searchTerm);
+    if (!isError) fetchMoviesByKeyword(searchTerm);
   }
   function handleChange(e){
+    setErrorState(false);
     setSearchTerm(e.target.value);
   }
 
