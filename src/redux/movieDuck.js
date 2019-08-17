@@ -1,5 +1,3 @@
-// import axios from 'axios';
-// import apiCall from './helpers';
 // --------------- ACTIONS ---------------------
 // Action Type Constants--this allows for VS Code autosuggest
 import C from './contants';
@@ -7,16 +5,32 @@ import apiCall from './helpers';
 import { ApiKey } from '../apiKey';
 
 
+export function fetchKeywords(keyword){
+  // https://api.themoviedb.org/3/search/keyword?api_key=029f49c7893162e8c110314651e83fc7&query=love&page=1
+
+  const keywordParams = {
+    baseUrl: 'https://api.themoviedb.org/3/search/keyword?',
+    actionType: C.FETCH_KEYWORDS,
+    apiParams: {
+        api_key: `${ApiKey}`,
+        query: `${keyword}`,
+        pages: '1',
+    }
+  }
+  return apiCall(keywordParams);
+}
+
 export function fetchMoviesByCompany(company){
+
   const companyParams = {
     baseUrl: 'https://api.themoviedb.org/3/discover/movie?',
     actionType: C.FETCH_MOVIES_BY_COMPANY,
     apiParams: {
-        api_key: `${C.API_KEY}`,
+        api_key: `${ApiKey}`,
         append_to_response: 'videos',
         sort_by: 'popularity.desc',
         with_companies: `${company}`,
-        pages: '1'
+        pages: '1',
     }
   }
   return apiCall(companyParams);
@@ -30,7 +44,7 @@ export function fetchMoviesByKeyword(keyword){
         query: `${keyword}`,
         language: 'en-US',
         include_adult: false,
-        page: 1
+        page: 1,
     }
   }
   return apiCall(keywordParams);
@@ -65,6 +79,11 @@ export function filterMoviesByRating(rating){
 export function filterMoviesByApproval(){
   return {
     type: C.FILTER_MOVIES_BY_APPROVAL,
+  }
+}
+export function clearKeywords(){
+  return {
+    type: C.CLEAR_KEYWORDS,
   }
 }
 
@@ -108,6 +127,16 @@ export default function movieReducer(state=initialState, action){
       return {
         ...state,
         movies: action.payload
+      }
+    case C.FETCH_KEYWORDS:
+      return {
+        ...state,
+        keywords: action.payload
+      }
+    case C.CLEAR_KEYWORDS:
+      return {
+        ...state,
+        keywords: []
       }
     case C.SET_COMPANY:
       return {

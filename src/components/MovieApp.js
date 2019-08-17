@@ -5,13 +5,17 @@ import CompanyDropdownList from './CompanyDropdownList';
 import SearchForm from './SearchForm';
 
 // inlcudes other components that use same state
-function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword }){
+function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword, fetchKeywords, clearKeywords }){
   return (
     <React.Fragment>
       <h1 className='text-center p-3'>Movie App</h1>
       <SearchForm 
         fetchMoviesByKeyword={fetchMoviesByKeyword}
+        fetchKeywords={fetchKeywords}
+        keywordSuggestions={data.keywords}
+        clearKeywords={clearKeywords}
       />
+      
       <CompanyDropdownList 
         companies={data.approvedCompanies}
         getCompany={fetchMoviesByCompany}

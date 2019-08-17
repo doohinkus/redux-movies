@@ -3,6 +3,8 @@ import {
   fetchMoviesByCompany, 
   fetchMoviesByKeyword, 
   filterMoviesByRating, 
+  fetchKeywords,
+  clearKeywords,
 } from '../redux/movieDuck';
 //importing this way prevents this file from having lots of component imports
 import MovieApp from '../components/MovieApp';
@@ -16,6 +18,8 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchMoviesByCompany: (company) => dispatch(fetchMoviesByCompany(company)),
     fetchMoviesByKeyword: (keyword) => dispatch(fetchMoviesByKeyword(keyword)),
+    fetchKeywords: (keyword) => dispatch(fetchKeywords(keyword)),
+    clearKeywords: () => dispatch(clearKeywords()),
     filterMoviesByRating: (rating) => dispatch(filterMoviesByRating(rating)),
   }
 };
