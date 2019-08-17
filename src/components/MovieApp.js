@@ -2,13 +2,16 @@ import React from 'react';
 // this component imports all of the other components
 import Movie from './Movie';
 import CompanyDropdownList from './CompanyDropdownList';
+import SearchForm from './SearchForm';
 
 // inlcudes other components that use same state
-function MovieApp({ data, fetchMoviesByCompany }){
+function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword }){
   return (
     <React.Fragment>
       <h1 className='text-center p-3'>Movie App</h1>
-      {/* <button onClick={() => props.fetchMoviesByCompany(521)}>Fetch by Company 521</button> */}
+      <SearchForm 
+        fetchMoviesByKeyword={fetchMoviesByKeyword}
+      />
       <CompanyDropdownList 
         companies={data.approvedCompanies}
         getCompany={fetchMoviesByCompany}

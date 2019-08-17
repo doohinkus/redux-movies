@@ -1,50 +1,41 @@
-// Api Key
-import { ApiKey  } from '../apiKey';
-import axios from 'axios';
+// import axios from 'axios';
+// import apiCall from './helpers';
 // --------------- ACTIONS ---------------------
 // Action Type Constants--this allows for VS Code autosuggest
-const C = {
-  SET_COMPANY: 'SET_COMPANY',
-  SET_KEYWORD: 'SET_KEYWORD',
-  FETCH_MOVIES_BY_COMPANY: 'FETCH_MOVIES_BY_COMPANY',
-  FETCH_MOVIES_BY_KEYWORD: 'FETCH_MOVIES_BY_KEYWORD',
-  FILTER_MOVIES_BY_RATING: 'FILTER_MOVIES_BY_RATING',
-  FILTER_MOVIES_BY_APPROVAL: 'FILTER_MOVIES_BY_APPROVAL',
-  START_FETCH: 'START_FETCH',
-  END_FETCH_SUCCESS: 'END_FETCH_SUCCESS',
-  END_FETCH_FAIL: 'END_FETCH_FAIL',
-}
+import C from './contants';
+import apiCall from './helpers';
+import { ApiKey } from '../apiKey';
+
 
 export function fetchMoviesByCompany(company){
-  const baseUrl = 'https://api.themoviedb.org/3/discover/movie?';
   const companyParams = {
-    api_key: `${ApiKey}`,
-    append_to_response: 'videos',
-    sort_by: 'popularity.desc',
-    //make me dynamic
-    with_companies: `${company}`,
-    pages: '1'
-    //end make me dynamic
-  };
-  return (dispatch) => {
-    dispatch({ type: C.START_FETCH });
-    dispatch({ type: C.FETCH_MOVIES_BY_COMPANY });
-    return axios.get(baseUrl, { params: companyParams })
-      // .then(res => console.log("RESULTS>>>>> ", res.data.results))
-      .then(res => dispatch({
-        type: C.FETCH_MOVIES_BY_COMPANY,
-        payload: res.data.results,
-      }))
-      .then(() => dispatch({ type: C.END_FETCH_SUCCESS }))
-      .catch(err => dispatch({ type: C.END_FETCH_FAIL, error: `${err}` }));
-  };
-}
-export function fetchMoviesByKeyword(keyword){
-  return {
-    type: C.FETCH_MOVIES_BY_KEYWORD,
-    // payload: axios call ...
+    baseUrl: 'https://api.themoviedb.org/3/discover/movie?',
+    actionType: C.FETCH_MOVIES_BY_COMPANY,
+    apiParams: {
+        api_key: `${C.API_KEY}`,
+        append_to_response: 'videos',
+        sort_by: 'popularity.desc',
+        with_companies: `${company}`,
+        pages: '1'
+    }
   }
+  return apiCall(companyParams);
 }
+
+export function fetchMoviesByKeyword(keyword){
+  const keywordParams = {
+    baseUrl: `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}`,
+    actionType: C.FETCH_MOVIES_BY_KEYWORD,
+    apiParams: {
+        query: `${keyword}`,
+        language: 'en-US',
+        include_adult: false,
+        page: 1
+    }
+  }
+  return apiCall(keywordParams);
+}
+
 export function startFetch(){
   return {
     type: C.START_FETCH,
@@ -107,8 +98,6 @@ const initialState = {
   currentPage: null,
   showPagination: false,
   isError: false,
-  company: null,
-  keyword: null,
   isApprovedCompany: false,
 }
 
