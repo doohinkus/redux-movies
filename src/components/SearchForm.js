@@ -57,14 +57,18 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, c
               </button>
             </div>
           </div>
-          {keywordSuggestions && keywordSuggestions.map(keyword => (
-              <Keyword 
-                  id={keyword.id}
-                  key={keyword.id}
-                  name={keyword.name}
-                  handleKeywordClick={handleKeywordClick}
-              />
-            ))}
+          <ul className="list-group">
+            {keywordSuggestions && keywordSuggestions.map(keyword => (
+                  <Keyword 
+                      id={keyword.id}
+                      key={keyword.id}
+                      name={keyword.name}
+                      handleKeywordClick={handleKeywordClick}
+                  />
+                )
+              )
+            }
+          </ul>
         </React.Fragment>
       );
   }

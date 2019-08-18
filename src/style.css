@@ -1,0 +1,9 @@
+.pointer {
+  cursor:  pointer !important;
+}
+.auto-list {
+  background-color: lightblue;
+}
+.auto-list:hover{
+  background-color: #ADEFD1FF;
+}

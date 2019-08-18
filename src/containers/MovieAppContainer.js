@@ -6,6 +6,7 @@ import {
   fetchKeywords,
   clearKeywords,
 } from '../redux/movieDuck';
+import '../style.css';
 //importing this way prevents this file from having lots of component imports
 import MovieApp from '../components/MovieApp';
 

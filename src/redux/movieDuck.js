@@ -6,7 +6,6 @@ import { ApiKey } from '../apiKey';
 
 
 export function fetchKeywords(keyword){
-  // https://api.themoviedb.org/3/search/keyword?api_key=029f49c7893162e8c110314651e83fc7&query=love&page=1
 
   const keywordParams = {
     baseUrl: 'https://api.themoviedb.org/3/search/keyword?',

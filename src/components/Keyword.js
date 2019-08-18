@@ -1,21 +1,17 @@
 import React from 'react';
 
 function Keyword({ id, name, handleKeywordClick }){
-  const style = {
-    cursor: 'pointer'
-  }
   function handleClick(){
     handleKeywordClick(id, name);
   }
   return (
     <React.Fragment>
-       <div 
-         className="alert alert-info mb-1" 
-         style={style}
+       <li 
+         className="list-group-item pointer" 
          onClick={handleClick}
         >
           {name}
-        </div>
+        </li>
     </React.Fragment>
   )
 }
