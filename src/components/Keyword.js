@@ -2,12 +2,13 @@ import React from 'react';
 
 function Keyword({ id, name, handleKeywordClick }){
   function handleClick(){
+    // handleKeywordClick(id, name);
     handleKeywordClick(id, name);
   }
   return (
     <React.Fragment>
        <li 
-         className="list-group-item pointer" 
+         className="list-group-item pointer keyword"
          onClick={handleClick}
         >
           {name}

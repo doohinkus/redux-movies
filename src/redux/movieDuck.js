@@ -1,12 +1,12 @@
 // --------------- ACTIONS ---------------------
 // Action Type Constants--this allows for VS Code autosuggest
 import C from './contants';
-import apiCall from './helpers';
+import apiCall, { apiCallKeywords } from './helpers';
 import { ApiKey } from '../apiKey';
 
 
 export function fetchKeywords(keyword){
-
+ 
   const keywordParams = {
     baseUrl: 'https://api.themoviedb.org/3/search/keyword?',
     actionType: C.FETCH_KEYWORDS,
@@ -36,6 +36,7 @@ export function fetchMoviesByCompany(company){
 }
 
 export function fetchMoviesByKeyword(keyword){
+  
   const keywordParams = {
     baseUrl: `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}`,
     actionType: C.FETCH_MOVIES_BY_KEYWORD,
@@ -46,7 +47,7 @@ export function fetchMoviesByKeyword(keyword){
         page: 1,
     }
   }
-  return apiCall(keywordParams);
+  return apiCallKeywords(keywordParams);
 }
 
 export function startFetch(){

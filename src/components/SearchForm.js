@@ -14,9 +14,7 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, c
     setSearchTerm("");
   }
   function handleKeywordClick(id, name){
-    console.log(id, " ", name);
     setSearchTerm(name);
-    clearKeywords();
     fetchMoviesByKeyword(name);
 
   }
