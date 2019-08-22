@@ -1,8 +1,8 @@
 import React from 'react';
-import {useSpring, animated} from 'react-spring'
+// import {useSpring, animated} from 'react-spring';
+// import { useSpring, animated } from 'react-spring';
 
-function Movie({ poster_path, title, id, release_date, overview }) {
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
+function Movie({ poster_path, title, release_date, overview, style }) {
   const image = (
     poster_path != null
     ?  
@@ -11,8 +11,8 @@ function Movie({ poster_path, title, id, release_date, overview }) {
       (<div><p>😞 😞 😞</p><p>No movie image</p></div>)
   );
   return (
-    <animated.div style={props}>
-      <div key={id} className="row mb-3">
+  
+      <div className="row mb-3">
         <div className="col-md-4 text-center">
           {image}
         </div>
@@ -22,7 +22,7 @@ function Movie({ poster_path, title, id, release_date, overview }) {
           <p>{overview}</p>
         </div>
       </div>
-    </animated.div>
+  
   );
 }
 
