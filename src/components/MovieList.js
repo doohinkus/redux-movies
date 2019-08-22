@@ -12,7 +12,6 @@ function MovieList({ movies }) {
               {movie => props => (
                       <div style={props}>
                         <Movie
-                          key={movie.id}
                           title={movie.original_title}
                           release_date={movie.release_date}
                           overview={movie.overview}
