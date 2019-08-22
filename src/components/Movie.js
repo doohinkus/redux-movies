@@ -1,8 +1,6 @@
 import React from 'react';
-// import {useSpring, animated} from 'react-spring';
-// import { useSpring, animated } from 'react-spring';
 
-function Movie({ poster_path, title, release_date, overview, style }) {
+function Movie({ poster_path, title, release_date, overview }) {
   const image = (
     poster_path != null
     ?  

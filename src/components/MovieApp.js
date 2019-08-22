@@ -18,24 +18,12 @@ function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword, fetchKeywo
         keywordSuggestions={data.keywords}
         clearKeywords={clearKeywords}
       />
-      
       <CompanyDropdownList 
         companies={data.approvedCompanies}
         getCompany={fetchMoviesByCompany}
       />
-     
       {data.movies && (<MovieList movies={data.movies} />)}
       
-      {/* {data.movies && data.movies.map(movie => (
-          <Movie
-            key={movie.id}
-            title={movie.original_title}
-            release_date={movie.release_date}
-            overview={movie.overview}
-            poster_path={movie.poster_path}
-          />
-        )
-      )} */}
     </React.Fragment>
   );
 };
