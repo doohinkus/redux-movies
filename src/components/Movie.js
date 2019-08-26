@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Movie({ poster_path, title, release_date, overview }) {
+function Movie({ poster_path, title, release_date, overview, style }) {
   const image = (
     poster_path != null
     ?  
@@ -10,7 +10,7 @@ function Movie({ poster_path, title, release_date, overview }) {
   );
   return (
   
-      <div className="row mb-3">
+      <div className="row mb-3" style={style}>
         <div className="col-md-4 text-center">
           {image}
         </div>

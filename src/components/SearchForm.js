@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import Keyword from './Keyword';
+import KeywordList from './KeywordList';
 
 
-function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, clearKeywords }) {
+function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions }) {
   const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedKeyword, setSelectedKeyword] = useState("");
   const [isError, setErrorState] = useState(false);
   function handleError(){
     searchTerm === "" ? setErrorState(true) : setErrorState(false); 
   }
-  function handleSubmit(e){
+  function handleSubmit(){
     handleError();
     if (!isError) fetchMoviesByKeyword(searchTerm);
     setSearchTerm("");
@@ -22,6 +23,18 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, c
     setErrorState(false);
     setSearchTerm(e.target.value);
     fetchKeywords(e.target.value);
+  }
+  function handleKeyPress(e){
+    const key = e.keyCode;
+    const element = e.target;
+    console.log("KEY>>> ", key, " ", element.id)
+    switch(key){
+      case 13:
+        handleSubmit();
+        break;
+      default:
+        return;
+    }
   }
 
   const errorMessage = (  
@@ -43,6 +56,7 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, c
               aria-label="Search"
               id="search"
               value={searchTerm}
+              // onKeyPress={handleKeyPress}
               onChange={handleChange} 
             />
             <div className="input-group-append">
@@ -55,18 +69,12 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions, c
               </button>
             </div>
           </div>
-          <ul className="list-group">
-            {keywordSuggestions && keywordSuggestions.map(keyword => (
-                  <Keyword 
-                      id={keyword.id}
-                      key={keyword.id}
-                      name={keyword.name}
-                      handleKeywordClick={handleKeywordClick}
-                  />
-                )
-              )
-            }
-          </ul>
+          <KeywordList 
+            keywordSuggestions={keywordSuggestions}
+            handleKeywordClick={handleKeywordClick}
+            onKeyPress={handleKeyPress}
+          />
+        
         </React.Fragment>
       );
   }

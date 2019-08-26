@@ -2,7 +2,6 @@ import React from 'react';
 
 function Keyword({ id, name, handleKeywordClick }){
   function handleClick(){
-    // handleKeywordClick(id, name);
     handleKeywordClick(id, name);
   }
   return (
@@ -10,6 +9,8 @@ function Keyword({ id, name, handleKeywordClick }){
        <li 
          className="list-group-item pointer keyword"
          onClick={handleClick}
+         tabIndex={0}
+
         >
           {name}
         </li>

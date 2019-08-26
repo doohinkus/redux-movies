@@ -6,10 +6,10 @@ const CompanyDropdownList = ({ companies, getCompany }) => {
   }
   return (
     <select className="custom-select mb-2 mr-sm-2" onChange={handleChange}>
-      <option value="null">Make Selection</option>
+      <option value="null" tabIndex={0}>Make Selection</option>
       {companies.map(company => {
         return (
-          <option key={company.id} value={company.id}>{company.name}</option>
+          <option key={company.id} value={company.id} tabIndex={0}>{company.name}</option>
         )
       })}
     </select>

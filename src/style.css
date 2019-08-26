@@ -1,6 +1,6 @@
 .pointer {
   cursor:  pointer !important;
 }
-.keyword:hover{
+.keyword:hover, .selected{
   background-color: #ADEFD1FF;
 }

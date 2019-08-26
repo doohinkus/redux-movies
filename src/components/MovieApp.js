@@ -3,10 +3,9 @@ import React from 'react';
 import CompanyDropdownList from './CompanyDropdownList';
 import SearchForm from './SearchForm';
 import MovieList from './MovieList';
-import Movie from './Movie'; 
 
 
-// inlcudes other components that use same state
+// includes other components that use same redux store /  state
 function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword, fetchKeywords, clearKeywords }){
   
   return (
