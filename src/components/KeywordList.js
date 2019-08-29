@@ -6,10 +6,10 @@ function KeywordList({ keywordSuggestions, handleKeywordClick }) {
     <ul className="list-group">
             {keywordSuggestions && keywordSuggestions.map(keyword => (
                   <Keyword 
-                      id={keyword.id}
-                      key={keyword.id}
-                      name={keyword.name}
-                      handleKeywordClick={handleKeywordClick}
+                    id={keyword.id}
+                    key={keyword.id}
+                    name={keyword.name}
+                    handleKeywordClick={handleKeywordClick}
                   />
                 )
               )

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Grid } from '@material-ui/core';
 
 function Movie({ poster_path, title, release_date, overview, style }) {
   const image = (
@@ -9,18 +10,16 @@ function Movie({ poster_path, title, release_date, overview, style }) {
       (<div><p>😞 😞 😞</p><p>No movie image</p></div>)
   );
   return (
-  
-      <div className="row mb-3" style={style}>
-        <div className="col-md-4 text-center">
+    <Fragment>
+        <Grid item md={4} xs={12} align="center" style={style}>
           {image}
-        </div>
-        <div className="col-md-8">
+        </Grid>
+        <Grid item md={8} xs={12} style={style}>
           <h3>{title} ({release_date ? release_date.substring(0,4) : "No Date"})</h3>
           {/* <p className="text-success">{this.state.companies.find(props => id===this.state.company).name}</p> */}
           <p>{overview}</p>
-        </div>
-      </div>
-  
+        </Grid>
+    </Fragment>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 // this component imports all of the other components
 import CompanyDropdownList from './CompanyDropdownList';
 import SearchForm from './SearchForm';
@@ -10,6 +12,7 @@ function MovieApp({ data, fetchMoviesByCompany, fetchMoviesByKeyword, fetchKeywo
   
   return (
     <React.Fragment>
+      <CssBaseline />
       <h1 className='text-center p-3'>Movie App</h1>
       <SearchForm 
         fetchMoviesByKeyword={fetchMoviesByKeyword}
