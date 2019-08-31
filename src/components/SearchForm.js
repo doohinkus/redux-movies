@@ -4,7 +4,7 @@ import KeywordList from './KeywordList';
 
 function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions }) {
   const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedKeyword, setSelectedKeyword] = useState("");
+  
   const [isError, setErrorState] = useState(false);
   function handleError(){
     searchTerm === "" ? setErrorState(true) : setErrorState(false); 
@@ -17,7 +17,7 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions })
   function handleKeywordClick(id, name){
     setSearchTerm(name);
     fetchMoviesByKeyword(name);
-
+    setSearchTerm("");
   }
   function handleChange(e){
     setErrorState(false);
