@@ -6,7 +6,7 @@ import Movie from './Movie';
 
 function MovieList({ movies }) {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
       <Transition
         items={movies} 
         keys={movie => movie.id}

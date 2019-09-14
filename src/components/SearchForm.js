@@ -48,7 +48,7 @@ function SearchForm({ fetchMoviesByKeyword, fetchKeywords, keywordSuggestions })
   return (
         <React.Fragment>  
           {isError && errorMessage}
-          <div className="input-group md-form form-sm form-2 pl-0">
+          <div className="input-group md-form form-sm form-2 pl-0 mb-2 mt-2">
             <input 
               className="form-control my-0 py-1 lime-border" 
               type="text" 
